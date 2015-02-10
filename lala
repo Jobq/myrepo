@@ -1,0 +1,69 @@
+./doc/ChangeLog-2001:    * Changed pf_read prototype and minor changes.
+./doc/ChangeLog-2002:       of inside the pf_read functions of access plugins. That means i_tell now
+./doc/ChangeLog-2007:    Use (s)size_t for pf_read and pf_write.
+./doc/ChangeLog-2003:    * src/input/input_ext-plugins.c: fixed nasty segfault when pf_read() returns -1;
+./doc/ChangeLog-2003:    * modules/access/*: pf_read() in access modules is now blocking. We still
+./doc/ChangeLog-2003:       assume that pf_read() == 0 means EOF.
+./include/vlc_sout.h:    ssize_t                 (*pf_read)( sout_access_out_t *, block_t * );
+./include/vlc_access.h:    /* pf_read/pf_block is used to read data.
+./include/vlc_access.h:    ssize_t     (*pf_read) ( access_t *, uint8_t *, size_t );  /* Return -1 if no data yet, 0 if no more data, else real data read */
+./include/vlc_access.h:        p_access->pf_read = (read); \
+./include/vlc_image.h:    picture_t * (*pf_read)      ( image_handler_t *, block_t *,
+./include/vlc_image.h:    picture_t * (*pf_read_url)  ( image_handler_t *, const char *,
+./include/vlc_image.h:#define image_Read( a, b, c, d ) a->pf_read( a, b, c, d )
+./include/vlc_image.h:#define image_ReadUrl( a, b, c, d ) a->pf_read_url( a, b, c, d )
+./include/vlc_stream.h:    int      (*pf_read)   ( stream_t *, void *p_read, unsigned int i_read );
+./modules/stream_filter/dash/dash.cpp:    p_stream->pf_read       = Read;
+./modules/stream_filter/httplive.c:    s->pf_read = Read;
+./modules/stream_filter/record.c:    s->pf_read = Read;
+./modules/stream_filter/decomp.c:    stream->pf_read = Read;
+./modules/access_output/file.c:    p_access->pf_read  = Read;
+./modules/access/vcd/vcd.c:    p_access->pf_read = NULL;
+./modules/access/rtsp/rtsp.c:  if( rtsp->pf_read_line( rtsp->p_userdata, (uint8_t*)psz_buffer, (unsigned int)BUF_SIZE ) >= 0 )
+./modules/access/rtsp/rtsp.c:        i = rtsp->pf_read( rtsp->p_userdata, (uint8_t*)buffer, (unsigned int) 4 );
+./modules/access/rtsp/rtsp.c:            i = rtsp->pf_read( rtsp->p_userdata, (unsigned char*)buffer, size );
+./modules/access/rtsp/rtsp.c:            i = rtsp->pf_read( rtsp->p_userdata, (unsigned char*)buffer + 4, size - 4 );
+./modules/access/rtsp/rtsp.c:    else i = rtsp->pf_read( rtsp->p_userdata, (unsigned char*)buffer, size );
+./modules/access/rtsp/rtsp.h:    int (*pf_read)( void *p_userdata, uint8_t *p_buffer, int i_buffer );
+./modules/access/rtsp/rtsp.h:    int (*pf_read_line)( void *p_userdata, uint8_t *p_buffer, int i_buffer );
+./modules/access/rtsp/access.c:    p_access->pf_read = NULL;
+./modules/access/rtsp/access.c:    p_sys->p_rtsp->pf_read = RtspRead;
+./modules/access/rtsp/access.c:    p_sys->p_rtsp->pf_read_line = RtspReadLine;
+./modules/access/mms/mmstu.c:    p_access->pf_read = NULL;
+./modules/access/mms/mmsh.c:        p_access->pf_read = ReadRedirect;
+./modules/access/htcpcp.c:    access->pf_read = Read;
+./modules/access/dshow/dshow.cpp:    p_access->pf_read = NULL;
+./modules/access/zip/zipstream.c:    s->pf_read = Read;
+./modules/access/vcdx/access.c:    p_access->pf_read          = NULL;
+./modules/access/v4l2/access.c:        access->pf_read = AccessReadStream;
+./modules/access/imem.c:    access->pf_read    = NULL;
+./modules/access/file.c:    p_access->pf_read = FileRead;
+./modules/access/file.c:    if (p_access->pf_read == NULL)
+./modules/access/directory.c:    p_access->pf_read  = NULL;
+./modules/access/avio.c:    access->pf_read = Read;
+./modules/access/sdp.c:    access->pf_read = Read;
+./modules/access/http.c:    p_access->pf_read = ReadCompressed;
+./modules/access/rar/stream.c:    s->pf_read = Read;
+./modules/access/rar/access.c:    access->pf_read    = Read;
+./modules/access/attachment.c:    access->pf_read    = Read;
+./modules/demux/subtitle.c:    int  (*pf_read)( demux_t *, subtitle_t*, int );
+./modules/demux/subtitle.c:    int  (*pf_read)( demux_t *, subtitle_t*, int );
+./modules/demux/subtitle.c:            pf_read = sub_read_subtitle_function[i].pf_read;
+./modules/demux/subtitle.c:        if( pf_read( p_demux, &p_sys->subtitle[p_sys->i_subtitles],
+./src/misc/image.c:    p_image->pf_read = ImageRead;
+./src/misc/image.c:    p_image->pf_read_url = ImageReadUrl;
+./src/input/stream_demux.c:    s->pf_read   = DStreamRead;
+./src/input/stream.c: *  - using pf_read
+./src/input/stream.c:/* Method2: A bit more complex, for pf_read
+./src/input/stream.c:    /* Method 2: for pf_read */
+./src/input/stream.c:    s->pf_read   = NULL;    /* Set up later */
+./src/input/stream.c:        s->pf_read = AStreamReadBlock;
+./src/input/stream.c:        s->pf_read = AStreamReadStream;
+./src/input/stream.c:        i_read = p_access->pf_read( p_access, p_read, i_read );
+./src/input/stream.c:    i_read = p_sys->p_list_access->pf_read( p_sys->p_list_access, p_read,
+./src/input/stream.c:    return s->pf_read( s, p_read, i_read );
+./src/input/stream_memory.c:    s->pf_read    = Read;
+./src/input/access.c:    p_access->pf_read    = NULL;
+./src/stream_output/stream_output.c:    p_access->pf_read    = NULL;
+./src/stream_output/stream_output.c:    return( p_access->pf_read ?
+./src/stream_output/stream_output.c:            p_access->pf_read( p_access, p_buffer ) : VLC_EGENERIC );
