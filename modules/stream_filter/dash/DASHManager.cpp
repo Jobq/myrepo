@@ -103,9 +103,9 @@ int     DASHManager::read( void *p_buffer, size_t len )
     if (this->des == 0)
     {
         ret = this->conManager->read(this->currentChunk, p_buffer, len);
-        cout << "Read 1 : length of the buffer : len = " << len << endl;
+        //cout << "Read 1 : length of the buffer : len = " << len << endl;
         if (ret < 0){
-            cout << "read : ret is 0 for des 1!" << endl;
+            //cout << "read : ret is 0 for des 1!" << endl;
             ret = this->conManager->read(this->currentChunk2, p_buffer, len);
         }
 
@@ -113,11 +113,11 @@ int     DASHManager::read( void *p_buffer, size_t len )
     else if (this->des == 1)
     {
         ret = this->conManager->read(this->currentChunk2, p_buffer, len);
-        cout << "Read 2 : length of the buffer : len = " << len << endl;
+        //cout << "Read 2 : length of the buffer : len = " << len << endl;
         if (ret < 0){
-            cout << "read : ret is less than 0 for des 2!" << endl;
+            //cout << "read : ret is less than 0 for des 2!" << endl;
             ret = this->conManager->read(this->currentChunk, p_buffer, len);
-            cout << "Ret is now " << ret << endl;
+            //cout << "Ret is now " << ret << endl;
         }
 
     }
@@ -132,7 +132,7 @@ int     DASHManager::read( void *p_buffer, size_t len )
     
     if ( ret == 0 )
     {
-        cout << "Read1 : Looking for a new chunk to download" << endl;
+        //cout << "Read1 : Looking for a new chunk to download" << endl;
         this->currentChunk = NULL;
         this->currentChunk2 = NULL;
 
@@ -197,14 +197,14 @@ int     DASHManager::read2( void *p_buffer, size_t len )
     /* perform plaback at palyback time with available chunks, or wait for a thread to be terminated */
 
     //int ret = this->conManager->read(this->currentChunk2, p_buffer, len);
-    cout << "Read2 : length of the buffer : len = " << len << endl;
+    //cout << "Read2 : length of the buffer : len = " << len << endl;
     
     
     int ret2 = this->conManager->read(this->currentChunk2, (void *)p_buffer , len);
     
     if ( ret2 == 0)
     {
-        cout << "Read2 : Looking for a new chunk to download" << endl;
+        //cout << "Read2 : Looking for a new chunk to download" << endl;
         this->currentChunk2 = NULL;
         return this->read(p_buffer, len );
     }

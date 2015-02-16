@@ -164,15 +164,7 @@ static int  Read            (stream_t *p_stream, void *p_buffer, unsigned int i_
     memset(s_buffer, '\0', i_len);
 
     i_ret = p_dashManager->read((void *)p_buffer, i_len );
-    //p_dashManager->read2((void *)s_buffer, i_len );
 
-    //cout << i_ret << " bytes read" << endl;
-    
-    //strncpy((char *)p_buffer, s_buffer, i_len);
-    //p_buffer = p_buffer + i_ret;
-
-    //cout << "The s_buffer is " << s_buffer << endl << endl << endl << "the p_buffer is " << (char *)p_buffer << endl;
-    //cout << "Length are for p_buf " << strlen((char*)p_buffer) << "and for s " << strlen(s_buffer) << endl;
     if (i_ret < 0)
     {
         switch (errno)

@@ -117,7 +117,6 @@ const ProgramInformation*     MPD::getProgramInformation  () const
 
 void                    MPD::addBaseUrl             (BaseUrl *url)
 {
-    cout << "MPD::addBaseUrl : Hello ___________________-- @@@@@&&&&&#### " << url << std::endl;
     this->baseUrls.push_back(url);
 }
 void                    MPD::addPeriod              (Period *period)

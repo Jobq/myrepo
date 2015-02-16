@@ -47,12 +47,11 @@ std::vector<Node *> DOMHelper::getElementByTagName      (Node *root, const std::
 std::vector<Node *> DOMHelper::getChildElementByTagName (Node *root, const std::string& name)
 {
     std::vector<Node *> elements;
-    cout << "DOMHelper::getChildElementByTagName : Looking in MPD for " << name << std::endl;
+    //cout << "DOMHelper::getChildElementByTagName : Looking in MPD for " << name << std::endl;
     for(size_t i = 0; i < root->getSubNodes().size(); i++)
     {
         //cout << "Element " << i << " of the " << root->getSubNodes().size() << " is \"" << root->getSubNodes().at(i)->getName() << "\"" << endl;
         if( root->getSubNodes().at(i)->getName() == name ){
-            cout << "Found! : " << endl;
             elements.push_back(root->getSubNodes().at(i));
         }
     }
