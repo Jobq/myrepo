@@ -194,7 +194,7 @@ static int  Read            (stream_t *p_stream, void *p_buffer, unsigned int i_
 
 static int  Peek            (stream_t *p_stream, const uint8_t **pp_peek, unsigned int i_peek)
 {
-    cout << "Call to PEEK of DASH Manager" << endl;
+    //cout << "Call to PEEK of DASH Manager" << endl;
 
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
     dash::DASHManager   *p_dashManager  = p_sys->p_dashManager;

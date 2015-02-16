@@ -26,8 +26,8 @@
 #endif
 
 #include "RateBasedAdaptationLogic.h"
+#include <iostream>
 
-using namespace std;
 using namespace std;
 using namespace dash::logic;
 using namespace dash::xml;
@@ -86,7 +86,7 @@ Chunk*  RateBasedAdaptationLogic::getNextChunk() throw(EOFException)
 
 Chunk* RateBasedAdaptationLogic::doTheThing() throw(EOFException){
 
-    cout << "__________________________ Doing the thing" << endl;
+    cout << "rateBasedAdaptationLogic : ___ Doing the thing" << endl;
     if(this->mpdManager == NULL)
         throw EOFException();
 
@@ -138,7 +138,10 @@ Chunk* RateBasedAdaptationLogic::doTheThing() throw(EOFException){
         Chunk *chunk2 = new Chunk;
 
         chunk->setUrl( seg->getSourceUrl() );
+        cout << "doTheThing : Source URL of seg1 is : " << seg->getSourceUrl() << endl;
         chunk2->setUrl( seg2->getSourceUrl() );
+        cout << "doTheThing : Source URL of seg2 is : " << seg2->getSourceUrl() << endl;
+
         chunkTab[0] = chunk;
         chunkTab[1] = chunk2;
 

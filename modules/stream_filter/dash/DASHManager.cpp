@@ -255,27 +255,27 @@ int     DASHManager::peek( const uint8_t **pp_peek, size_t i_peek )
     if (this->des == 0)
     {
         ret = this->conManager->peek( this->currentChunk2, pp_peek, i_peek );
-        cout << "test Ret is " << ret << endl;
+        //cout << "test Ret is " << ret << endl;
         if (ret <= 0){
             ret = this->conManager->peek( this->currentChunk, pp_peek, i_peek );
-            cout << "test2 Ret is " << ret << endl;
+            //cout << "test2 Ret is " << ret << endl;
 
         }
     }
     else if (this->des == 1)
     {
         ret = this->conManager->peek( this->currentChunk, pp_peek, i_peek );
-        cout << "test Ret is " << ret << endl; 
+        //cout << "test Ret is " << ret << endl; 
         if (ret <= 0){
             ret = this->conManager->peek( this->currentChunk2, pp_peek, i_peek );
-            cout << "test2 Ret is " << ret << endl;
+            //cout << "test2 Ret is " << ret << endl;
 
         }
     }
     else
         cout << "dashManager::read : PBL in the description number while downloading" << endl;
 
-    cout << "Ret is " << ret << endl;
+    //cout << "Ret is " << ret << endl;
 
 
     return ret;

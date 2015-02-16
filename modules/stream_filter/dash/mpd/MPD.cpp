@@ -25,8 +25,10 @@
 # include "config.h"
 #endif
 
+using namespace std; 
 #include "MPD.h"
 
+#include <iostream>
 using namespace dash::mpd;
 
 MPD::MPD () :
@@ -115,6 +117,7 @@ const ProgramInformation*     MPD::getProgramInformation  () const
 
 void                    MPD::addBaseUrl             (BaseUrl *url)
 {
+    cout << "MPD::addBaseUrl : Hello ___________________-- @@@@@&&&&&#### " << url << std::endl;
     this->baseUrls.push_back(url);
 }
 void                    MPD::addPeriod              (Period *period)

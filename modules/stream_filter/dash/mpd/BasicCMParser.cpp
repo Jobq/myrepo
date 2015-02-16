@@ -39,6 +39,9 @@
 #include <vlc_stream.h>
 #include <vlc_strings.h>
 
+#include <iostream>
+
+using namespace std;
 using namespace dash::mpd;
 using namespace dash::xml;
 
@@ -145,12 +148,15 @@ bool    BasicCMParser::setMPD()
 }
 void    BasicCMParser::setMPDBaseUrl        (Node *root)
 {
+    cout << "BasicCMParser::setMPDBaseUrl :  Called _____-- @@@@@&&&&&#### " << std::endl;
     std::vector<Node *> baseUrls = DOMHelper::getChildElementByTagName(root, "BaseURL");
-
+    
     for(size_t i = 0; i < baseUrls.size(); i++)
     {
-        BaseUrl *url = new BaseUrl(baseUrls.at(i)->getText());
-        this->mpd->addBaseUrl(url);
+        
+        BaseUrl *lala = new BaseUrl(baseUrls.at(i)->getText());
+        cout << "BasicCMPParser::setMPDBaseUrl : URL found is : " << (*lala).getUrl() << endl;
+        this->mpd->addBaseUrl(lala);
     }
 }
 
@@ -213,14 +219,16 @@ void BasicCMParser::parseSegmentTimeline(Node *node, SegmentInfoCommon *segmentI
 void BasicCMParser::parseSegmentInfoCommon(Node *node, SegmentInfoCommon *segmentInfo)
 {
     const std::map<std::string, std::string>            attr = node->getAttributes();
-
+    //cout << "BasicCMParser::parseSegmentInfoCommon : Calling getchild " << endl;
     const std::vector<Node*>            baseUrls = DOMHelper::getChildElementByTagName( node, "BaseURL" );
+    cout << "BasicCMParser::parseSegmentInfoCommon : " << baseUrls.size() << " BaseUrls found!" << endl;
     if ( baseUrls.size() > 0 )
     {
         std::vector<Node*>::const_iterator  it = baseUrls.begin();
         std::vector<Node*>::const_iterator  end = baseUrls.end();
         while ( it != end )
         {
+            cout << "BasicCMParser::parseSegmentInfoCOmmon : appending the BaseURL with \"" << (*it)->getText() << "\""  << endl;
             segmentInfo->appendBaseURL( (*it)->getText() );
             ++it;
         }
@@ -239,15 +247,19 @@ void BasicCMParser::parseSegmentInfoCommon(Node *node, SegmentInfoCommon *segmen
 
 void BasicCMParser::parseSegmentInfoDefault(Node *node, Group *group)
 {
+    cout << "BasicCMParser::parseSegmentInfoDefault : CALLED!" << endl;
     Node*   segmentInfoDefaultNode = DOMHelper::getFirstChildElementByName( node, "SegmentInfoDefault" );
 
     if ( segmentInfoDefaultNode != NULL )
     {
+        cout << "BasicCMParser::parseSegmentInfoDefault : segmentInfoDefaultNode is NOT null!" << endl;
         SegmentInfoDefault* segInfoDef = new SegmentInfoDefault;
         this->parseSegmentInfoCommon( segmentInfoDefaultNode, segInfoDef );
 
         group->setSegmentInfoDefault( segInfoDef );
     }
+    cout << "BasicCMParser::parseSegmentInfoDefault : CALL DONE!" << endl;
+
 }
 
 void    BasicCMParser::setGroups            (Node *root, Period *period)
@@ -334,6 +346,7 @@ void    BasicCMParser::setRepresentations   (Node *root, Group *group)
 
         if ( this->setSegmentInfo( representations.at(i), rep ) == false )
         {
+            cout << "BasicCMParser::setRepresentations : setSegmentInfo has failed!" << endl;
             delete rep;
             continue ;
         }
@@ -367,6 +380,7 @@ bool    BasicCMParser::setSegmentInfo       (Node *root, Representation *rep)
         //If we don't have any segment, there's no point keeping this SegmentInfo.
         if ( this->setSegments( segmentInfo, info ) == false )
         {
+            cout << "BasicCMParser::setSegmentInfo : setsegments call failed" << endl;
             delete info;
             return false;
         }
@@ -377,7 +391,7 @@ bool    BasicCMParser::setSegmentInfo       (Node *root, Representation *rep)
     return false;
 }
 
-Segment*    BasicCMParser::parseSegment( Node* node )
+Segment*    BasicCMParser::parseSegment( Node* node, SegmentInfo * info)
 {
     const std::map<std::string, std::string>    attr = node->getAttributes();
     std::map<std::string, std::string>::const_iterator  it;
@@ -388,6 +402,8 @@ Segment*    BasicCMParser::parseSegment( Node* node )
     if ( node->getName() == "UrlTemplate" )
         isTemplate = true;
     it = attr.find( "sourceURL" );
+    cout << "sourceURL is :" << it->second << endl;
+
     //FIXME: When not present, the sourceUrl attribute should be computed
     //using BaseURL and the range attribute.
     if ( it != attr.end() )
@@ -403,10 +419,19 @@ Segment*    BasicCMParser::parseSegment( Node* node )
             }
             seg = new SegmentTemplate( runtimeToken, this->currentRepresentation );
         }
-        else
+        else{
             seg = new Segment;
+        }
+
+        std::list<string> my_list = info->getBaseURL();
+        
         if ( url.find( this->p_stream->psz_access ) != 0 ) //Relative url
+            url = my_list.begin()->c_str() + url;
+
+/*        if ( url.find( this->p_stream->psz_access ) != 0 ) //Relative url
             url = this->url + url;
+*/
+        //cout << "THE FINAL URL is \"" << url << "\"" << endl;
         seg->setSourceUrl( url );
     }
     return seg;
@@ -415,8 +440,10 @@ Segment*    BasicCMParser::parseSegment( Node* node )
 ProgramInformation* BasicCMParser::parseProgramInformation()
 {
     Node*   pInfoNode = DOMHelper::getFirstChildElementByName( this->root, "ProgramInformation" );
-    if ( pInfoNode == NULL )
+    if ( pInfoNode == NULL ){
+        cout << "BasicCMParser::parseProgramInformation : NULL has been returned" << endl;
         return NULL;
+    }
     ProgramInformation  *pInfo = new ProgramInformation;
     const std::map<std::string, std::string>    attr = pInfoNode->getAttributes();
     std::map<std::string, std::string>::const_iterator  it;
@@ -444,7 +471,7 @@ void    BasicCMParser::setInitSegment       (Node *root, SegmentInfoCommon *info
                      " other InitialisationSegmentURL will be dropped." << std::endl;
     if ( initSeg.size() == 1 )
     {
-        Segment     *seg = parseSegment( initSeg.at(0) );
+        Segment     *seg = parseSegment( initSeg.at(0), (SegmentInfo *) info );
         if ( seg != NULL )
             info->setInitialisationSegment( seg );
     }
@@ -460,7 +487,10 @@ bool    BasicCMParser::setSegments          (Node *root, SegmentInfo *info)
     segments.insert( segments.end(), segmentsTemplates.begin(), segmentsTemplates.end() );
     for(size_t i = 0; i < segments.size(); i++)
     {
-        Segment*    seg = parseSegment( segments.at( i ) );
+        std::list<std::string> my_list = info->getBaseURL();
+        cout << my_list.begin()->c_str() << endl;
+
+        Segment*    seg = parseSegment( segments.at( i ), info );
         if ( seg == NULL )
             continue ;
         if ( seg->getSourceUrl().empty() == false )
@@ -537,6 +567,7 @@ MPD*    BasicCMParser::getMPD()
 
 void BasicCMParser::parseContentDescriptor(Node *node, const std::string &name, void (CommonAttributesElements::*addPtr)(ContentDescription *), CommonAttributesElements *self) const
 {
+    cout << "BasicCMParser::parseContentDescriptor : searching for :" << name << endl;
     std::vector<Node*>  descriptors = DOMHelper::getChildElementByTagName( node, name );
     if ( descriptors.empty() == true )
         return ;

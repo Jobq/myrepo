@@ -1,7 +1,7 @@
 libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
  ../../../config.h ../../../include/vlc_fixups.h \
- /usr/lib/gcc/i686-linux-gnu/4.6/include/stddef.h xml/DOMHelper.h \
- /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_algobase.h \
+ /usr/lib/gcc/i686-linux-gnu/4.6/include/stddef.h \
+ /usr/include/c++/4.6/iostream \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/c++config.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/os_defines.h \
  /usr/include/features.h /usr/include/i386-linux-gnu/bits/predefs.h \
@@ -10,6 +10,15 @@ libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/cpu_defines.h \
+ /usr/include/c++/4.6/ostream /usr/include/c++/4.6/ios \
+ /usr/include/c++/4.6/iosfwd /usr/include/c++/4.6/bits/stringfwd.h \
+ /usr/include/c++/4.6/bits/postypes.h /usr/include/c++/4.6/cwchar \
+ /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h \
+ /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/xlocale.h \
+ /usr/include/i386-linux-gnu/bits/wchar2.h /usr/include/c++/4.6/exception \
+ /usr/include/c++/4.6/bits/char_traits.h \
+ /usr/include/c++/4.6/bits/stl_algobase.h \
  /usr/include/c++/4.6/bits/functexcept.h \
  /usr/include/c++/4.6/bits/exception_defines.h \
  /usr/include/c++/4.6/bits/cpp_type_traits.h \
@@ -20,37 +29,15 @@ libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
  /usr/include/c++/4.6/bits/stl_iterator_base_types.h \
  /usr/include/c++/4.6/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/4.6/bits/stl_iterator.h \
- /usr/include/c++/4.6/debug/debug.h /usr/include/c++/4.6/bits/allocator.h \
- /usr/include/c++/4.6/i686-linux-gnu/./bits/c++allocator.h \
- /usr/include/c++/4.6/ext/new_allocator.h /usr/include/c++/4.6/new \
- /usr/include/c++/4.6/exception /usr/include/c++/4.6/bits/stl_construct.h \
- /usr/include/c++/4.6/bits/stl_uninitialized.h \
- /usr/include/c++/4.6/bits/stl_vector.h \
- /usr/include/c++/4.6/initializer_list \
- /usr/include/c++/4.6/bits/stl_bvector.h \
- /usr/include/c++/4.6/bits/range_access.h \
- /usr/include/c++/4.6/bits/vector.tcc /usr/include/c++/4.6/string \
- /usr/include/c++/4.6/bits/stringfwd.h \
- /usr/include/c++/4.6/bits/char_traits.h \
- /usr/include/c++/4.6/bits/postypes.h /usr/include/c++/4.6/cwchar \
- /usr/include/wchar.h /usr/include/stdio.h \
- /usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h \
- /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/xlocale.h \
- /usr/include/i386-linux-gnu/bits/wchar2.h \
- /usr/include/c++/4.6/bits/localefwd.h \
+ /usr/include/c++/4.6/debug/debug.h /usr/include/c++/4.6/bits/localefwd.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/c++locale.h \
  /usr/include/c++/4.6/clocale /usr/include/locale.h \
- /usr/include/i386-linux-gnu/bits/locale.h /usr/include/c++/4.6/iosfwd \
- /usr/include/c++/4.6/cctype /usr/include/ctype.h \
- /usr/include/i386-linux-gnu/bits/types.h \
+ /usr/include/i386-linux-gnu/bits/locale.h /usr/include/c++/4.6/cctype \
+ /usr/include/ctype.h /usr/include/i386-linux-gnu/bits/types.h \
  /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/endian.h \
  /usr/include/i386-linux-gnu/bits/endian.h \
  /usr/include/i386-linux-gnu/bits/byteswap.h \
- /usr/include/c++/4.6/bits/ostream_insert.h \
- /usr/include/c++/4.6/bits/cxxabi_forced.h \
- /usr/include/c++/4.6/bits/stl_function.h \
- /usr/include/c++/4.6/backward/binders.h \
- /usr/include/c++/4.6/bits/basic_string.h \
+ /usr/include/c++/4.6/bits/ios_base.h \
  /usr/include/c++/4.6/ext/atomicity.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/gthr.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/gthr-default.h \
@@ -65,13 +52,18 @@ libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
  /usr/include/i386-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/i386-linux-gnu/bits/unistd.h \
  /usr/include/c++/4.6/i686-linux-gnu/./bits/atomic_word.h \
- /usr/include/c++/4.6/bits/basic_string.tcc xml/Node.h \
- /usr/include/c++/4.6/map /usr/include/c++/4.6/bits/stl_tree.h \
- /usr/include/c++/4.6/bits/stl_map.h \
- /usr/include/c++/4.6/bits/stl_multimap.h /usr/include/c++/4.6/iostream \
- /usr/include/c++/4.6/ostream /usr/include/c++/4.6/ios \
- /usr/include/c++/4.6/bits/ios_base.h \
- /usr/include/c++/4.6/bits/locale_classes.h \
+ /usr/include/c++/4.6/bits/locale_classes.h /usr/include/c++/4.6/string \
+ /usr/include/c++/4.6/bits/allocator.h \
+ /usr/include/c++/4.6/i686-linux-gnu/./bits/c++allocator.h \
+ /usr/include/c++/4.6/ext/new_allocator.h /usr/include/c++/4.6/new \
+ /usr/include/c++/4.6/bits/ostream_insert.h \
+ /usr/include/c++/4.6/bits/cxxabi_forced.h \
+ /usr/include/c++/4.6/bits/stl_function.h \
+ /usr/include/c++/4.6/backward/binders.h \
+ /usr/include/c++/4.6/bits/range_access.h \
+ /usr/include/c++/4.6/bits/basic_string.h \
+ /usr/include/c++/4.6/initializer_list \
+ /usr/include/c++/4.6/bits/basic_string.tcc \
  /usr/include/c++/4.6/bits/locale_classes.tcc \
  /usr/include/c++/4.6/streambuf /usr/include/c++/4.6/bits/streambuf.tcc \
  /usr/include/c++/4.6/bits/basic_ios.h \
@@ -83,7 +75,14 @@ libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
  /usr/include/c++/4.6/bits/locale_facets.tcc \
  /usr/include/c++/4.6/bits/basic_ios.tcc \
  /usr/include/c++/4.6/bits/ostream.tcc /usr/include/c++/4.6/istream \
- /usr/include/c++/4.6/bits/istream.tcc
+ /usr/include/c++/4.6/bits/istream.tcc xml/DOMHelper.h \
+ /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_construct.h \
+ /usr/include/c++/4.6/bits/stl_uninitialized.h \
+ /usr/include/c++/4.6/bits/stl_vector.h \
+ /usr/include/c++/4.6/bits/stl_bvector.h \
+ /usr/include/c++/4.6/bits/vector.tcc xml/Node.h /usr/include/c++/4.6/map \
+ /usr/include/c++/4.6/bits/stl_tree.h /usr/include/c++/4.6/bits/stl_map.h \
+ /usr/include/c++/4.6/bits/stl_multimap.h
 
 ../../../config.h:
 
@@ -91,11 +90,7 @@ libstream_filter_dash_plugin_la-DOMHelper.lo: xml/DOMHelper.cpp \
 
 /usr/lib/gcc/i686-linux-gnu/4.6/include/stddef.h:
 
-xml/DOMHelper.h:
-
-/usr/include/c++/4.6/vector:
-
-/usr/include/c++/4.6/bits/stl_algobase.h:
+/usr/include/c++/4.6/iostream:
 
 /usr/include/c++/4.6/i686-linux-gnu/./bits/c++config.h:
 
@@ -114,6 +109,36 @@ xml/DOMHelper.h:
 /usr/include/i386-linux-gnu/gnu/stubs-32.h:
 
 /usr/include/c++/4.6/i686-linux-gnu/./bits/cpu_defines.h:
+
+/usr/include/c++/4.6/ostream:
+
+/usr/include/c++/4.6/ios:
+
+/usr/include/c++/4.6/iosfwd:
+
+/usr/include/c++/4.6/bits/stringfwd.h:
+
+/usr/include/c++/4.6/bits/postypes.h:
+
+/usr/include/c++/4.6/cwchar:
+
+/usr/include/wchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h:
+
+/usr/include/i386-linux-gnu/bits/wchar.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/i386-linux-gnu/bits/wchar2.h:
+
+/usr/include/c++/4.6/exception:
+
+/usr/include/c++/4.6/bits/char_traits.h:
+
+/usr/include/c++/4.6/bits/stl_algobase.h:
 
 /usr/include/c++/4.6/bits/functexcept.h:
 
@@ -139,52 +164,6 @@ xml/DOMHelper.h:
 
 /usr/include/c++/4.6/debug/debug.h:
 
-/usr/include/c++/4.6/bits/allocator.h:
-
-/usr/include/c++/4.6/i686-linux-gnu/./bits/c++allocator.h:
-
-/usr/include/c++/4.6/ext/new_allocator.h:
-
-/usr/include/c++/4.6/new:
-
-/usr/include/c++/4.6/exception:
-
-/usr/include/c++/4.6/bits/stl_construct.h:
-
-/usr/include/c++/4.6/bits/stl_uninitialized.h:
-
-/usr/include/c++/4.6/bits/stl_vector.h:
-
-/usr/include/c++/4.6/initializer_list:
-
-/usr/include/c++/4.6/bits/stl_bvector.h:
-
-/usr/include/c++/4.6/bits/range_access.h:
-
-/usr/include/c++/4.6/bits/vector.tcc:
-
-/usr/include/c++/4.6/string:
-
-/usr/include/c++/4.6/bits/stringfwd.h:
-
-/usr/include/c++/4.6/bits/char_traits.h:
-
-/usr/include/c++/4.6/bits/postypes.h:
-
-/usr/include/c++/4.6/cwchar:
-
-/usr/include/wchar.h:
-
-/usr/include/stdio.h:
-
-/usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h:
-
-/usr/include/i386-linux-gnu/bits/wchar.h:
-
-/usr/include/xlocale.h:
-
-/usr/include/i386-linux-gnu/bits/wchar2.h:
-
 /usr/include/c++/4.6/bits/localefwd.h:
 
 /usr/include/c++/4.6/i686-linux-gnu/./bits/c++locale.h:
@@ -194,8 +173,6 @@ xml/DOMHelper.h:
 /usr/include/locale.h:
 
 /usr/include/i386-linux-gnu/bits/locale.h:
-
-/usr/include/c++/4.6/iosfwd:
 
 /usr/include/c++/4.6/cctype:
 
@@ -211,15 +188,7 @@ xml/DOMHelper.h:
 
 /usr/include/i386-linux-gnu/bits/byteswap.h:
 
-/usr/include/c++/4.6/bits/ostream_insert.h:
-
-/usr/include/c++/4.6/bits/cxxabi_forced.h:
-
-/usr/include/c++/4.6/bits/stl_function.h:
-
-/usr/include/c++/4.6/backward/binders.h:
-
-/usr/include/c++/4.6/bits/basic_string.h:
+/usr/include/c++/4.6/bits/ios_base.h:
 
 /usr/include/c++/4.6/ext/atomicity.h:
 
@@ -257,27 +226,33 @@ xml/DOMHelper.h:
 
 /usr/include/c++/4.6/i686-linux-gnu/./bits/atomic_word.h:
 
-/usr/include/c++/4.6/bits/basic_string.tcc:
-
-xml/Node.h:
-
-/usr/include/c++/4.6/map:
-
-/usr/include/c++/4.6/bits/stl_tree.h:
-
-/usr/include/c++/4.6/bits/stl_map.h:
-
-/usr/include/c++/4.6/bits/stl_multimap.h:
-
-/usr/include/c++/4.6/iostream:
-
-/usr/include/c++/4.6/ostream:
-
-/usr/include/c++/4.6/ios:
-
-/usr/include/c++/4.6/bits/ios_base.h:
-
 /usr/include/c++/4.6/bits/locale_classes.h:
+
+/usr/include/c++/4.6/string:
+
+/usr/include/c++/4.6/bits/allocator.h:
+
+/usr/include/c++/4.6/i686-linux-gnu/./bits/c++allocator.h:
+
+/usr/include/c++/4.6/ext/new_allocator.h:
+
+/usr/include/c++/4.6/new:
+
+/usr/include/c++/4.6/bits/ostream_insert.h:
+
+/usr/include/c++/4.6/bits/cxxabi_forced.h:
+
+/usr/include/c++/4.6/bits/stl_function.h:
+
+/usr/include/c++/4.6/backward/binders.h:
+
+/usr/include/c++/4.6/bits/range_access.h:
+
+/usr/include/c++/4.6/bits/basic_string.h:
+
+/usr/include/c++/4.6/initializer_list:
+
+/usr/include/c++/4.6/bits/basic_string.tcc:
 
 /usr/include/c++/4.6/bits/locale_classes.tcc:
 
@@ -308,3 +283,27 @@ xml/Node.h:
 /usr/include/c++/4.6/istream:
 
 /usr/include/c++/4.6/bits/istream.tcc:
+
+xml/DOMHelper.h:
+
+/usr/include/c++/4.6/vector:
+
+/usr/include/c++/4.6/bits/stl_construct.h:
+
+/usr/include/c++/4.6/bits/stl_uninitialized.h:
+
+/usr/include/c++/4.6/bits/stl_vector.h:
+
+/usr/include/c++/4.6/bits/stl_bvector.h:
+
+/usr/include/c++/4.6/bits/vector.tcc:
+
+xml/Node.h:
+
+/usr/include/c++/4.6/map:
+
+/usr/include/c++/4.6/bits/stl_tree.h:
+
+/usr/include/c++/4.6/bits/stl_map.h:
+
+/usr/include/c++/4.6/bits/stl_multimap.h:
